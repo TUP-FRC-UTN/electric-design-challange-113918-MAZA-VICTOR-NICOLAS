@@ -1,5 +1,60 @@
 {
-  "budgets": [],
+  "budgets": [
+    {
+      "id": "690a",
+      "fecha": "2024-10-25",
+      "cliente": "raul",
+      "modulos": [
+        {
+          "tipo": "Toma corriente simple",
+          "ambiente": "Comedor"
+        },
+        {
+          "tipo": "Interruptor doble",
+          "ambiente": "Cocina"
+        },
+        {
+          "tipo": "Toma corriente simple",
+          "ambiente": "Cocina"
+        },
+        {
+          "tipo": "Interruptor doble",
+          "ambiente": "Dormitorio"
+        },
+        {
+          "tipo": "Interruptor doble",
+          "ambiente": "Cocina"
+        }
+      ]
+    },
+    {
+      "id": "1317",
+      "fecha": "2024-10-25",
+      "cliente": "juan",
+      "modulos": [
+        {
+          "tipo": "Interruptor doble",
+          "ambiente": "Cocina"
+        },
+        {
+          "tipo": "Toma corriente simple",
+          "ambiente": "Cocina"
+        },
+        {
+          "tipo": "Interruptor doble",
+          "ambiente": "Cocina"
+        },
+        {
+          "tipo": "Interruptor doble",
+          "ambiente": "Cocina"
+        },
+        {
+          "tipo": "Interruptor doble",
+          "ambiente": "Cocina"
+        }
+      ]
+    }
+  ],
   "module-types": [
     {
       "id": "1",

@@ -1,1 +1,23 @@
-<!-- BUILD IT FROM HERE https://getbootstrap.com/docs/5.3/components/card/#sizing -->
+<div class="container mt-4">
+    <h2>Presupuesto {{ budgetselected?.id }}</h2>
+    <p>Cajas necesarias: {{ boxesRequired }}</p>
+
+    @for (ambiente of getAmbientes(); track $index) {
+    <div>
+        <h3>{{ ambiente | uppercase }}</h3>
+        <ul>
+            @for (modulo of groupedModules[ambiente]; track $index) {
+
+            <li>
+                {{ modulo.tipo }} ({{ modulo.slots }}) - ${{ modulo.precio }}
+            </li>
+            }
+
+        </ul>
+    </div>
+    }
+
+
+    <h4>Total Cotización: ${{ totalCost }}</h4>
+    <button class="btn btn-primary">Volver</button>
+</div>
