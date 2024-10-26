@@ -1,1 +1,26 @@
-<!-- BUILD IT FROM HERE https://getbootstrap.com/docs/5.3/content/tables/#striped-rows -->
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Cliente</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Modulos</th>
+            <th scope="col">Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+      @for (item of budgets; track $index) {
+        <tr>
+          <th scope="row">{{item.id}}</th>
+          <td>{{item.cliente}}</td>
+          <td>{{item.fecha | date:'dd/MM/yyyy'}}</td>
+          <td>{{item.modulos.length}}</td> 
+          <a [routerLink]="['/budget-view', item.id]">
+            <i class="bi bi-calculator-fill"></i>
+          </a>
+        </tr>
+      }
+        
+      </tbody>
+      
+</table>

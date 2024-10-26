@@ -1,4 +1,85 @@
-<!-- BUILT IT FROM:
-https://getbootstrap.com/docs/5.3/forms/form-control/#example
-https://getbootstrap.com/docs/5.3/forms/select/#default
-https://getbootstrap.com/docs/5.3/forms/select/#default -->
+<form [formGroup]="budgetForm" (ngSubmit)="onSubmit()" class="container">
+  <h1>Nueva cotización</h1>
+
+
+  <div class="form-group">
+    <label for="cliente">Nombre:</label>
+    <input id="cliente" formControlName="cliente" type="text" class="form-control"
+      placeholder="Ingrese el nombre del cliente" />
+    @if (budgetForm.controls['cliente'].invalid && budgetForm.controls['cliente'].touched) {
+
+    <div class="text-danger">
+      El nombre es obligatorio.
+    </div>
+    }
+
+  </div>
+
+
+  <div class="form-group">
+    <label for="fecha">Fecha:</label>
+    <input id="fecha" formControlName="fecha" type="date" class="form-control" placeholder="Seleccione la fecha" />
+
+    @if (budgetForm.controls['fecha'].hasError('invalidFecha') && budgetForm.controls['fecha'].touched) {
+    <div class="text-danger">
+      La fecha no puede ser mayor a hoy.
+    </div>
+
+    }
+
+  </div>
+
+
+  <div formArrayName="modulos" class="form-group">
+    <h3>Debe cargar al menos 5 módulos.</h3>
+
+
+    <div class="row">
+      @for (modulo of modulos.controls; track $index) {
+      <div [formGroupName]="$index" class="col-md-6 mb-3">
+        <div class="border p-3">
+          <h4>Módulo #{{ $index + 1 }}</h4>
+
+
+          <div class="form-group">
+            <label for="tipoModulo">Tipo Módulo:</label>
+            <select formControlName="tipo" class="form-control">
+              <option *ngFor="let mod of moduleTypes" [value]="mod.name">{{ mod.name }}</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="ambiente">Ambiente:</label>
+            <select formControlName="ambiente" class="form-control">
+              <option *ngFor="let zone of zoneOptions" [value]="zone">{{ zone }}</option>
+            </select>
+          </div>
+
+
+          <div class="form-group">
+            <label for="precio">Precio:</label>
+            <input formControlName="precio" type="text" class="form-control" readonly />
+          </div>
+
+          <div class="form-group">
+            <label for="slots">Lugares:</label>
+            <input formControlName="slots" type="number" class="form-control" readonly />
+          </div>
+
+
+          <button type="button" class="btn btn-danger" (click)="deleteModulo($index)">Eliminar módulo</button>
+        </div>
+      </div>
+
+
+      }
+
+    </div>
+  </div>
+
+  <button type="button" class="btn btn-link" (click)="addModulo()">+ Módulo</button>
+
+  <button type="submit" class="btn btn-primary" [disabled]="budgetForm.invalid">Guardar</button>
+  <button type="button" class="btn btn-secondary">Volver</button>
+</form>
